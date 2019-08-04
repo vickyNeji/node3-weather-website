@@ -1,12 +1,15 @@
 const express=require('express')
 const hbs=require('hbs')
+
 const app=express()
+const port=process.env.PORT || 3000
 const path=require('path')
 const geocode=require('./utils/geocode')
 const forecast=require('./utils/forecast')
 
 //DEfine paths for Express config
 const finalPath=path.join(__dirname,'../public')
+const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPAth=path.join(__dirname,'../templates/partials')
 console.log(partialsPAth)
 //console.log(finalPath)
@@ -14,7 +17,8 @@ console.log(partialsPAth)
 
 
 //Setup handlebars engine and views location
-app.set('views','../templates/views')
+//app.set('views','../templates/views')
+app.set('views', viewsPath)
 app.set('view engine','hbs')
 hbs.registerPartials(partialsPAth)
 
@@ -30,9 +34,9 @@ app.get('',(req,res)=>{
     })
 })
 
-app.listen(3000,function(){
-    console.log("Server is runnung")
-})
+// app.listen(3000,function(){
+//     console.log("Server is runnung")
+// })
 app.get('/about',function(req,res){
     res.render('about',{
         title:'About PAge',
@@ -118,6 +122,10 @@ app.get('*',(req,res)=>{
 
 })
 
+
+app.listen(port,function(){
+    console.log("Server is runnung"+port)
+})
 
 
 // app.get('/help',function(req,res){
