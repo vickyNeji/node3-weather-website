@@ -1,4 +1,4 @@
-console.log("From JAvascript")
+
 
 
 const weatherForm=document.querySelector('form')
