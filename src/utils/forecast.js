@@ -13,7 +13,7 @@ const forecast=function(latitude,longitude,callback){
             callback("No coordinate found",undefined)
 
         }else{
-            callback(undefined,"It is currently "+response.body.currently.temperature+" degrees out,"+"there is "+response.body.currently.precipProbability+"% chance of rain")
+            callback(undefined,"It is currently "+response.body.currently.temperature+" degrees out,"+"there is "+response.body.currently.precipProbability*100 +"% chance of rain")
 
 
         }
